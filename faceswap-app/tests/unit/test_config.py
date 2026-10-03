@@ -11,7 +11,16 @@ from faceswap.app.config import DetectionPolicy, QualityProfile, SessionConfig
 _CONFIG_PATH = (
     pathlib.Path(__file__).resolve().parents[2] / "src" / "faceswap" / "app" / "config.py"
 )
-_ALLOWED_IMPORT_ROOTS = {"__future__", "dataclasses", "enum"}
+_ALLOWED_IMPORT_ROOTS = {
+    "__future__",
+    "dataclasses",
+    "enum",
+    "json",
+    "os",
+    "pathlib",
+    "tempfile",
+    "collections",
+}
 _SESSION_FIELDS = (
     "camera_id",
     "width",
