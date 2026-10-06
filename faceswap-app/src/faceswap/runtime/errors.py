@@ -24,6 +24,8 @@ class ErrorCode(enum.StrEnum):
     VIRTUAL_CAMERA_PERMISSION_DENIED = "virtual_camera_permission_denied"
     VIRTUAL_CAMERA_CONSUMER_DISCONNECTED = "virtual_camera_consumer_disconnected"
     NATIVE_COMPONENT_FAILURE = "native_component_failure"
+    ENVIRONMENT_UNSUPPORTED = "environment_unsupported"
+    INTERNAL_ERROR = "internal_error"
 
 
 DEFAULT_USER_MESSAGES: Mapping[ErrorCode, str] = MappingProxyType(
@@ -62,6 +64,14 @@ DEFAULT_USER_MESSAGES: Mapping[ErrorCode, str] = MappingProxyType(
         ErrorCode.NATIVE_COMPONENT_FAILURE: (
             "An internal virtual camera component failed. "
             "Stop and start the virtual camera; if it persists, export diagnostics."
+        ),
+        ErrorCode.ENVIRONMENT_UNSUPPORTED: (
+            "This PC does not meet the minimum requirements (Windows 11 build 22000 or later, "
+            "64-bit, Python 3.12). Check the system requirements, then retry."
+        ),
+        ErrorCode.INTERNAL_ERROR: (
+            "An unexpected internal error occurred. "
+            "Retry, and if the problem continues, export diagnostics."
         ),
     }
 )

@@ -57,6 +57,14 @@ _EXPECTED_MESSAGES = {
         "An internal virtual camera component failed. "
         "Stop and start the virtual camera; if it persists, export diagnostics."
     ),
+    ErrorCode.ENVIRONMENT_UNSUPPORTED: (
+        "This PC does not meet the minimum requirements (Windows 11 build 22000 or later, "
+        "64-bit, Python 3.12). Check the system requirements, then retry."
+    ),
+    ErrorCode.INTERNAL_ERROR: (
+        "An unexpected internal error occurred. "
+        "Retry, and if the problem continues, export diagnostics."
+    ),
 }
 _APP_ERROR_FIELDS = ("code", "user_message", "detail")
 
@@ -72,9 +80,11 @@ def test_error_code_members_are_exact() -> None:
         "VIRTUAL_CAMERA_PERMISSION_DENIED",
         "VIRTUAL_CAMERA_CONSUMER_DISCONNECTED",
         "NATIVE_COMPONENT_FAILURE",
+        "ENVIRONMENT_UNSUPPORTED",
+        "INTERNAL_ERROR",
     )
     values = [member.value for member in ErrorCode]
-    assert len(values) == len(set(values)) == 9
+    assert len(values) == len(set(values)) == 11
     assert all(_CODE_VALUE.fullmatch(value) for value in values)
     assert {member.name: member.value for member in ErrorCode} == {
         code.name: code.value for code in _EXPECTED_MESSAGES
